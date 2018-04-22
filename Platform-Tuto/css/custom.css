@@ -3,13 +3,19 @@ body{
 	overflow-x: hidden;
 }
 
-.jumbotron-fluid{
+.jumbotron-fluid-bg{
 	/*background-image: url(../img/bg.png);*/
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/bg.png");
 	height: 75vh;
 }
 .ash-bg{
 	background-color: #808080;
+}
+.dark-gray-bg{
+	background-color: #818181;
+}
+.blue-bg{
+	background-color: #3A6FAC!important;
 }
 .icon-primary{
 	color: #3A6FAC;
@@ -18,10 +24,11 @@ body{
 	background-color: #3A6FAC;
 	color: #ffffff;
 }
-.dark-gray-bg{
-	background-color: #818181;
-}
 .learning-img-div{
 	background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../img/learning.png");	
 	background-size: cover;
 }
+.card-shadow{
+	box-shadow: 0 0 20px 4px #e8e8e8;
+}
+
