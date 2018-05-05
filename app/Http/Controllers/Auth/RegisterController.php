@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Teacher;
+use App\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -63,10 +65,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if(isset($data['account-type'])){
+            $user = new User;
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password = Hash::make($data['password']);
+            $user->save();
+            if($data['account-type'] == 'teacher'){
+                $teacher = new Teacher;
+                $teacher->user_id = $user->id;
+                $teacher->save();
+
+            }elseif ($data['account-type'] == 'client') {
+                $client = new Client;
+                $client->user_id = $user->id;
+                $client->save();
+            }
+        }
+        return $user; 
     }
 }

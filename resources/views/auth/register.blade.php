@@ -61,6 +61,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right" for="account-type">Select Account Type</label>
+                            <div class="col-md-6">        
+                                <input type="radio" name="account-type" value="teacher" checked> Teacher<br>
+                                <input type="radio" name="account-type" value="client">Parent<br>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
