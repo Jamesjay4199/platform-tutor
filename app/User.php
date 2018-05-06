@@ -34,4 +34,8 @@ class User extends Authenticatable
     public function client(){
         return $this->hasOne('App\Teacher');
     }
+
+    public function message() {
+        return $this->hasMany()('App\Message');
+    }
 }
