@@ -11,5 +11,8 @@ class Teacher extends Model
    	}
    	public function job(){
    		return $this->hasMany('App\Job');
-	   }
+	}
+	public function message(){
+		return $this->hasMany('App\Message');
+	}
 }

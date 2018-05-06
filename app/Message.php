@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-     public function user(){
-    	return $this->belongsTo('App\User');
+     public function teacher(){
+    	return $this->belongsTo('App\Teacher');
+    }
+
+    public function client(){
+    	return $this->belongsTo('App\Client');
     }
 
 }
