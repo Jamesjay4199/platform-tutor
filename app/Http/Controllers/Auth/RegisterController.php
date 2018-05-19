@@ -70,7 +70,13 @@ class RegisterController extends Controller
             $user->name = $data['name'];
             $user->email = $data['email'];
             $user->password = Hash::make($data['password']);
-            
+            if($data['account-type'] == 'teacher'){
+                $user->type = 'teacher';
+            }else{
+                $user->type = 'client';
+            }
+            $user->save();
+
             if($data['account-type'] == 'teacher'){
                 $user->type = 'teacher';
                 $teacher = new Teacher;
@@ -83,7 +89,7 @@ class RegisterController extends Controller
                 $client->user_id = $user->id;
                 $client->save();
             }
-            $user->save();
+            
         }
         return $user; 
     }
