@@ -70,17 +70,20 @@ class RegisterController extends Controller
             $user->name = $data['name'];
             $user->email = $data['email'];
             $user->password = Hash::make($data['password']);
-            $user->save();
+            
             if($data['account-type'] == 'teacher'){
+                $user->type = 'teacher';
                 $teacher = new Teacher;
                 $teacher->user_id = $user->id;
                 $teacher->save();
 
             }elseif ($data['account-type'] == 'client') {
+                $user->type = 'client';
                 $client = new Client;
                 $client->user_id = $user->id;
                 $client->save();
             }
+            $user->save();
         }
         return $user; 
     }
