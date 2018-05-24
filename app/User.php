@@ -32,7 +32,7 @@ class User extends Authenticatable
     }
 
     public function client(){
-        return $this->hasOne('App\Teacher');
+        return $this->hasOne('App\Client');
     }
 
     public function message() {

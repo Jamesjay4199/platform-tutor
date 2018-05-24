@@ -17,4 +17,53 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard', 'HomeController@show')->name('dashboard');
+Route::get('/notifications', function(){
+	return view('teacher.notifications');
+});
+Route::get('/messages', function(){
+	return view('teacher.messages');
+});
+Route::get('/jobs', function(){
+	return view('teacher.jobs');
+});
+Route::get('/payments', function(){
+	return view('teacher.payments');
+});
+Route::post('/editUser', 'UserController@update');
+Route::get('/test-tutor', function(){return view('test.tutor');});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//should be the last route
+Route::get('/{username}', 'UserController@profile');
+Route::get('/{username}/subjects', function($username){
+	return view('teacher.subjects');
+});

@@ -1,24 +1,8 @@
 @extends('layouts.app')
 @section('content')
 	<div class="row">
-    <div class="col-2">
-      <div class="list-group" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action " id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
-     <i style="font-size:20px" class="fa">&#xf0c0;</i> Find a tutor</a>
-        <a class="list-group-item list-group-item-action" id="list-chat-list" data-toggle="list" href="#list-chat" role="tab" aria-controls="chat">
-     <i class="fa fa-comments"></i>   Chat</a>
-        <a class="list-group-item list-group-item-action" id="list-not-list" data-toggle="list" href="#list-not" role="tab" aria-controls="not">
-     <i class="fa fa-bell fa-lg"></i>Notifications</a>
-        <a class="list-group-item list-group-item-action" id="list-history-list" data-toggle="list" href="#list-history" role="tab" aria-controls="history">
-     <i class="fa fa-history"></i>   History</a>
-        <a class="list-group-item prof-a list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
-    <i class="fa fa-user"></i>My Profile</a>
-        <!-- <div class="list-group " id="list-tab" role="tablist"> -->
-        <a class="list-group-item " style="background-color: white;" id="list-Become-list" data-toggle="list" href="list-Become" role="tab" aria-controls="Become"><p1><strong>BECOME A TEACHER</strong></p1></a>
-        <a class="list-group-item "  data-toggle="list" href="list-Become" role="tab" aria-controls=""></a>
-            
-    </div>  
-    </div>
+    @include('partials.client-sidebar')
+    
 <!-- End of side bar -->
 
 <!-- body -->
@@ -29,13 +13,13 @@
             <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-home-list">
                 <div class="form-row">
                     <div class="form-group col-md-5">
-                      	<input type="text" class="form-control" id="search"placeholder"">
+                      	<input type="text" class="form-control" id="search">
                     </div>
                     <div class="form-group col-md-5">
                       	<input type="text" class="form-control" id="search">
                     </div>
                 
-                	<button type="submit" class="btn col-md-2">Search</button>
+                	<button type="submit" class="btn btn-primary btn-lg">Search</button>
                 </div>
                  <br>
             <!-- Tutor -->

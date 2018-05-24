@@ -70,6 +70,7 @@ class RegisterController extends Controller
             $user->name = $data['name'];
             $user->email = $data['email'];
             $user->password = Hash::make($data['password']);
+            $user->username = preg_replace('/\s/', '', strtolower($data['name']) ). mt_rand(11, 9999);
             if($data['account-type'] == 'teacher'){
                 $user->type = 'teacher';
             }else{
