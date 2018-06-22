@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Teacher;
 use App\Client;
+use JD\Cloudder\Facades\Cloudder;
 class UserController extends Controller
 {
     function __construct(){
@@ -25,11 +26,12 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-        //dd($request->about);
+        
         $user = User::find($request->user);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->location = $request->location;
+        $user->picture = $this->uploadToCloudinary($request->file('pic'));
         if($user->type == 'teacher')
         {
             $user->teacher->about = $request->about;
@@ -43,5 +45,14 @@ class UserController extends Controller
         $user->save();
 
         return back()->with('status', 'Updated Sucessfully');
+    }
+
+    public function uploadToCloudinary($file){
+        if($file == null){return null;}
+        $pic = $file->getRealPath();
+        //dd($pic);
+        Cloudder::upload($pic, null);
+        $picture =Cloudder::show(Cloudder::getPublicId(),["width"=>150, "height"=> 150]);
+        return $picture;
     }
 }
