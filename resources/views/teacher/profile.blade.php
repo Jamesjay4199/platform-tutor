@@ -44,7 +44,7 @@ $active = 'profile';
             <div><i class="fas fa-plus-circle plus"></i></div>
           </div>
         </div>
-      </div>               
+      </div>
     </div>
   </div>
 </div>

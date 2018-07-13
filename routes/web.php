@@ -31,7 +31,14 @@ Route::get('/payments', function(){
 	return view('teacher.payments');
 });
 Route::post('/editUser', 'UserController@update');
-Route::get('/test-tutor', function(){return view('test.tutor');});
+
+Route::get('/test-tutor', function(){
+	return view('test.tutor');
+});
+
+Route::get('/subjects', 'SubjectController@index');
+
+Route::post('/subjects', 'SubjectController@store');
 
 
 

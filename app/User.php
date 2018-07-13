@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function message() {
         return $this->hasMany()('App\Message');
     }
+
+    // public function subject() {
+    //     return $this->hasMany()('App\Subject');
+    // }
 }

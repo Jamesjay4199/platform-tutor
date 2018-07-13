@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Teacher;
+
 use App\Client;
 use JD\Cloudder\Facades\Cloudder;
+
 class UserController extends Controller
 {
     function __construct(){
@@ -21,12 +22,10 @@ class UserController extends Controller
     	}elseif ($user->type) {
     		return view('client.dashboard');
     	}
-    	
     }
 
     public function update(Request $request)
     {
-        
         $user = User::find($request->user);
         $user->name = $request->name;
         $user->email = $request->email;
@@ -54,5 +53,14 @@ class UserController extends Controller
         Cloudder::upload($pic, null);
         $picture =Cloudder::show(Cloudder::getPublicId(),["width"=>150, "height"=> 150]);
         return $picture;
+    }
+
+    public function subject()
+    {
+        $user = \Auth::user();
+        $id = $user->id;
+        $name = $user->subject;
+        $subjects = Teacher::all();
+        return view('teacher.subjects', compact('subjects'));
     }
 }
