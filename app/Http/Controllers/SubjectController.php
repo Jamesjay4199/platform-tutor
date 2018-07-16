@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Teacher;
 
+use App\Teacher_Subject;
+
 use App\Subject;
 
 class SubjectController extends Controller
@@ -13,9 +15,9 @@ class SubjectController extends Controller
     public function index()
     {
         $user_id = auth()->user()->id;
-        $subjects = Subject::where('user_id', $user_id)->get();
-        // dd('subjects');
-        return view('teacher.subjects', compact('subjects'));
+        $available_subjects = Subject::all();
+        $user_subjects = Teacher_Subject::where('user_id', $user_id)->get();
+        return view('teacher.subjects', compact('available_subjects', 'user_subjects'));
     }
 
     public function store(Request $request)
@@ -25,12 +27,10 @@ class SubjectController extends Controller
         'subject' => 'required'
         ]);
 
-        $subject = new Subject;
         $user_id = auth()->user()->id;
-        // return json_encode($user);
-        // $subject = Subject::where('user_id', $user_id)->first();
-        $subject->subject = $request->subject;
+        $subject = new Teacher_Subject;
         $subject->user_id = $user_id;
+        $subject->subject_id = $request->input('subject_id');
         $subject->save();
         return back()->with('status', 'Updated Sucessfully');
     }

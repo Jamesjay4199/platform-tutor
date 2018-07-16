@@ -58,13 +58,18 @@
       </div>
     </nav>
     <h1 class="text-white text-center mt-5 pt-5">Lets help you find a <span class="text-warning">tutor</span>&hellip;</h1>
+
+  <form method="GET" action="/search">
+    @csrf
     <div class="d-flex justify-content-center my-5">
-      <div class="w-50 d-flex ash-bg p-2">
-        <input type="text" class="form-control form-control-lg rounded-0" placeholder="Subject" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append ml-3">
-          <button class="btn btn-lg search-btn rounded-0" type="button">Search</button>
-        </div>
-      </div>
+    <div class="w-50 d-flex ash-bg p-2">
+        <input type="text" class="form-control form-control-lg rounded-0" name="search" placeholder="Subject" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append ml-3">
+            <button class="btn btn-lg search-btn rounded-0" type="submit">Search</button>
+          </div>
+    </div>
+  </form>
+
     </div>
   </div>
 

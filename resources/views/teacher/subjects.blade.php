@@ -15,10 +15,12 @@
                     <div class="row">
                         <div class="col-8">
                             @include('./partials.errors')
-                            @foreach($subjects as $subject)
-                            <p class= "text-box form-control">{{$subject->subject}}</p>
-                            @endforeach
-                            <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addSubject"><i class="fas fa-pencil-alt"></i>  Edit Subject</button>
+                            @forelse ($user_subjects as $subject)
+                               {{$subject}}
+                            @empty
+                                <p class= "text-box form-control">No subject selected</p>
+                            @endforelse
+                            <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addSubject"><i class="fas fa-pencil-alt"></i> Add Subject</button>
                         </div>
                     </div>
                 </div>
@@ -27,7 +29,7 @@
     </div>
 </div>
 
-<form action="/subjects" method="post">
+<form action="/subjects" method="POST">
   @csrf
 <div class="modal fade" id="addSubject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -40,10 +42,14 @@
       </div>
       <div class="modal-body">
         <input type="hidden" name="user" value="">
-          <div class="form-group">
-            <label for="name">Subject:</label>
-            <input class="form-control" id="name" type="text" name="subject" value="">
-          </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Subject</label>
+          <select name="subject_id" class="form-control" id="exampleFormControlSelect1">
+          @foreach($available_subjects as $available_subject)
+            <option value="{{$available_subject->id}}">{{$available_subject->subject}}</option>
+          @endforeach
+          </select>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

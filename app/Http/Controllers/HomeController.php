@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Subject;
+
 use Auth;
 
 class HomeController extends Controller
@@ -42,5 +45,15 @@ class HomeController extends Controller
         }else{
             return redirect('/login');
         }
+    }
+    public function search()
+    {
+        $search = \Request::get('search'); //<-- we use global request to get the param of URI
+        $search = Subject::where('subject','like','%'.$search.'%')
+            ->orderBy('subject')
+            ->paginate(20);
+
+            return ($search);
+        return view('search',compact('search'));
     }
 }
