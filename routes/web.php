@@ -40,7 +40,7 @@ Route::get('/subjects', 'SubjectController@index');
 
 Route::post('/subjects', 'SubjectController@store');
 
-Route::get('search', 'HomeController@search');
+Route::get("my-search","HomeController@mySearch");
 
 
 

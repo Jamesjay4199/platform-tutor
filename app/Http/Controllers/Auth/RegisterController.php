@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Teacher;
 use App\Client;
+use App\Mail\Welcome;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -75,8 +76,10 @@ class RegisterController extends Controller
                 $user->type = 'teacher';
             }else{
                 $user->type = 'client';
-            }
+            } 
             $user->save();
+
+            \Mail::to($user)->send(new Welcome($user));
 
             if($data['account-type'] == 'teacher'){
                 $user->type = 'teacher';
@@ -90,7 +93,7 @@ class RegisterController extends Controller
                 $client->user_id = $user->id;
                 $client->save();
             }
-            
+
         }
         return $user; 
     }

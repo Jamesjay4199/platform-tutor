@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Subject;
-
+use App\User;
 use Auth;
 
 class HomeController extends Controller
@@ -55,5 +55,17 @@ class HomeController extends Controller
 
             return ($search);
         return view('search',compact('search'));
+    }
+
+    public function mySearch(Request $request)
+    {
+    	if($request->has('search')){
+    		$users = User::search($request->get('search'))->get();
+    	}else{
+    		$users = User::get();
+    	}
+
+
+    	return view('teacher.teachers', compact('users'));
     }
 }
