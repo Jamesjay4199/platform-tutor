@@ -39,7 +39,7 @@
             <a class="nav-link h5 text-white" href="#">Subjects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link h5 text-white" href="#">Blog</a>
+            <a class="nav-link h5 text-white" href="/blog">Blog</a>
           </li>
           @if (Route::has('login'))
           <li class="nav-item border-right">
