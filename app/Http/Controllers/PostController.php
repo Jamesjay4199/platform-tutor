@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Input;
 
 use App\Post;
 
+use App\Comment;
+
 class PostController extends Controller
 {
     public function index()
     {
         $posts = Post::all();
-       return view('blog/index', compact('posts'));
+        return view('blog/index', compact('posts'));
     }
 
     public function create()

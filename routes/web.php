@@ -19,6 +19,10 @@ Route::get('/blog/{post}', 'PostController@show');
 
 Route::post('/create', 'PostController@store');
 
+Route::post('blog/comment/{post}', 'CommentController@store');
+
+Route::post('blog/comment/reply/{comment}', 'CommentController@reply');
+
 Route::get('/', 'HomeController@index');
 
 Auth::routes();
